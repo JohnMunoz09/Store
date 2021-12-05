@@ -47,8 +47,8 @@ public class UserController {
 
     /**
      * Metodo PUT para actualizar registro
-     * @param user
-     * @return
+     * @param user obtiene objeto User
+     * @return datos actualizado
      */
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
@@ -56,6 +56,11 @@ public class UserController {
         return userServices.update(user);
     }
 
+    /**
+     * Metodo DELETE para eliminar registro
+     * @param id recibe el id del usuario
+     * @return registro usuario
+     */
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int id){
@@ -68,7 +73,6 @@ public class UserController {
      * @param password recibe la contrasena
      * @return datos del usuario no nulos
      */
-
     @GetMapping("/{email}/{password}")
     public User loginUser(@PathVariable("email") String email, @PathVariable("password") String password){
         return userServices.loginUser(email, password);

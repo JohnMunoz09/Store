@@ -8,8 +8,10 @@ import reto.mintic.ciclo4.Reto.Model.Supplement;
 import java.util.List;
 import java.util.Optional;
 
+
 @Repository
 public class SupplementRepository {
+
 
     @Autowired
     private InterfaceSupplement interfaceSupplement;

@@ -1,11 +1,11 @@
 package reto.mintic.ciclo4.Reto.Model;
 
 import lombok.*;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 
 /**
  * @Author John Muñoz
@@ -24,6 +24,7 @@ public class Supplement{
      * reference is id
      */
     @Id
+    @Field(name = "reference")
     private String reference;
 
     /**
