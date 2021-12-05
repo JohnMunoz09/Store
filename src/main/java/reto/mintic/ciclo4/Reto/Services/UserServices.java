@@ -31,7 +31,7 @@ public class UserServices {
                     return user;
                 }
             }else {
-                return userRepository.save(user);
+                return user;
             }
     }
 
@@ -39,16 +39,31 @@ public class UserServices {
         if (user.getId()!= null){
             Optional<User> revision = userRepository.getUser(user.getId());
             if (!revision.isEmpty()){
-                if (user.getEmail() != null){
-                    revision.get().setEmail(user.getEmail());
+                if (user.getIdentification() != null){
+                    revision.get().setIdentification(user.getIdentification());
                 }
                 if (user.getName() != null){
                     revision.get().setName(user.getName());
                 }
+                if (user.getAddress() != null){
+                    revision.get().setAddress(user.getAddress());
+                }
+                if (user.getCellPhone() != null){
+                    revision.get().setCellPhone(user.getCellPhone());
+                }
+                if (user.getEmail() != null){
+                    revision.get().setEmail(user.getEmail());
+                }
                 if(user.getPassword() != null){
                     revision.get().setPassword(user.getPassword());
                 }
-                userRepository.save(revision.get());
+                if (user.getZone() != null){
+                    revision.get().setZone(user.getZone());
+                }
+                if (user.getType() != null){
+                    revision.get().setType(user.getType());
+                }
+                userRepository.update(revision.get());
                 return revision.get();
             }else{
                 return user;
@@ -73,7 +88,7 @@ public class UserServices {
     public User loginUser(String email,String password){
         Optional<User> revision = userRepository.loginUser(email, password);
         if (revision.isEmpty()){
-            return new User(email,password,"NO DEFINIDO");
+            return new User();
         }else{
             return revision.get();
         }

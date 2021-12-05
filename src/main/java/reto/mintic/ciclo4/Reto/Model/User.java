@@ -1,28 +1,27 @@
 package reto.mintic.ciclo4.Reto.Model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 
 import javax.persistence.*;
 import java.io.Serializable;
-
+import java.util.Date;
 
 
 /**
  * @Author John Muñoz
+ * @Version 1.0
  * User model class
  */
-@Entity
-@Table(name = "user")
+//@Entity
+//@Table(name = "user")
 @Data
-@RequiredArgsConstructor
+@AllArgsConstructor
+//@RequiredArgsConstructor
 @NoArgsConstructor
-//@Document(collection="users") ------> Mongo DB
+@Document(collection="users")
 public class User implements Serializable {
     /**
      * Database fields
@@ -31,27 +30,29 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    /**
-     * userEmail is email field
-     */
-    @NonNull
-    @Column(name = "user_email",nullable = false, length = 50)
-    //@Field(name="user_email")
+
+    @Field(name = "identification")
+    private String identification;
+
+    @Field(name = "name")
+    private String name;
+
+    @Field(name = "address")
+    private String address;
+
+    @Field(name = "cellPhone")
+    private String cellPhone;
+
+    @Field(name = "email")
     private String email;
 
-    /**
-     * userPassword is password field
-     */
-    @NonNull
-    @Column(name = "user_password",nullable = false,length = 50)
-    //@Field(name = "user_password")
+    @Field(name = "password")
     private String password;
-    /**
-     * userName is name field
-     */
-    @NonNull
-    @Column(name = "user_name", nullable = false, length = 80)
-    //@Field(name = "user_name")
-    private String name;
+
+    @Field(name = "zone")
+    private String zone;
+
+    @Field(name = "type")
+    private String type;
 
 }

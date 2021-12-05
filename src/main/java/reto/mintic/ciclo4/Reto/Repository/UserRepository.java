@@ -26,6 +26,10 @@ public class UserRepository {
         return interfaceUser.save(user);
     }
 
+    public void update(User user){
+        interfaceUser.save(user);
+    }
+
     public void delete(User user){
         interfaceUser.delete(user);
     }
@@ -37,5 +41,9 @@ public class UserRepository {
 
     public Optional<User> loginUser(String email,String password){
         return interfaceUser.findByEmailAndPassword(email,password);
+    }
+
+    public Optional<User> getNameOrEmail(String name, String email){
+        return interfaceUser.findByNameOrEmail(name,email);
     }
 }
