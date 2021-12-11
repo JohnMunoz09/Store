@@ -8,6 +8,7 @@ import reto.mintic.ciclo4.Reto.Model.User;
 import reto.mintic.ciclo4.Reto.Services.UserServices;
 
 import java.util.List;
+import java.util.Optional;
 
 
 /**
@@ -87,4 +88,15 @@ public class UserController {
     public boolean existEmail(@PathVariable("email") String email){
         return  userServices.existEmail(email);
     }
+
+    /**
+     * Metodo GET para traer a usuario por id
+     * @param id Recibe id
+     */
+    @GetMapping("/{id}")
+    public Optional<User> getUser(@PathVariable("id") Integer id) {
+        return userServices.getUser(id);
+    }
+
+
 }
