@@ -28,7 +28,7 @@ public class User implements Serializable {
      * Id is user identification
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Field(name = "identification")
@@ -36,6 +36,12 @@ public class User implements Serializable {
 
     @Field(name = "name")
     private String name;
+
+    @Field(name ="birthtDay")
+    private Date birthtDay;
+
+    @Field(name = "monthBirthtDay")
+    private String monthBirthtDay;
 
     @Field(name = "address")
     private String address;

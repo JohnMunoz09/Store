@@ -45,6 +45,13 @@ public class UserServices {
                 if (user.getName() != null){
                     revision.get().setName(user.getName());
                 }
+                if (user.getBirthtDay() != null){
+                    revision.get().setBirthtDay(user.getBirthtDay());
+                }
+
+                if (user.getMonthBirthtDay() != null){
+                    revision.get().setMonthBirthtDay(user.getMonthBirthtDay());
+                }
                 if (user.getAddress() != null){
                     revision.get().setAddress(user.getAddress());
                 }
