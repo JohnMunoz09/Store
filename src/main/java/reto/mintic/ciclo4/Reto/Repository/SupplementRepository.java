@@ -31,6 +31,7 @@ public class SupplementRepository {
     public void update(Supplement supplement){
         interfaceSupplement.save(supplement);
     }
+
     public void delete(Supplement supplement) {
         interfaceSupplement.delete(supplement);
     }

@@ -5,6 +5,8 @@ import org.springframework.stereotype.Repository;
 import reto.mintic.ciclo4.Reto.Interface.InterfaceOrder;
 import reto.mintic.ciclo4.Reto.Model.Order;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,5 +37,22 @@ public class OrderRespository {
 
         public List<Order> getOrderByZone(String zone){
             return interfaceOrder.findBySalesManZone(zone);
+        }
+
+        public List<Order> getSalesManId(Integer id){
+            return interfaceOrder.findBySalesManId(id);
+        }
+
+        public List<Order> getIdStatus(Integer id,String status){
+            return interfaceOrder.findBySalesManIdAndStatus(id,status);
+        }
+
+        public List<Order> getRegisterDayId(String registerDay, Integer id) {
+            try {
+                return interfaceOrder.findByRegisterDayAndSalesManId(new SimpleDateFormat("yyyy-MM-dd").parse(registerDay),id);
+            } catch (ParseException error){
+                System.out.println(error);
+                return null;
+            }
         }
 }

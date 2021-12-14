@@ -77,4 +77,16 @@ public class OrderServices {
     public List<Order> getOrderByZone(String zone){
         return orderRespository.getOrderByZone(zone);
     }
+
+    public List<Order> getSalesManId(Integer id){
+        return orderRespository.getSalesManId(id);
+    }
+
+    public List<Order> getIdStatus(Integer id, String status){
+        return orderRespository.getIdStatus(id,status);
+    }
+
+    public List<Order> getRegisterDayId(String registerDay, Integer id){
+        return orderRespository.getRegisterDayId(registerDay,id);
+    }
 }
