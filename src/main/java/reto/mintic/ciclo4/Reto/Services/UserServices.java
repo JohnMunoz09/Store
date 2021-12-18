@@ -8,20 +8,39 @@ import reto.mintic.ciclo4.Reto.Repository.UserRepository;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * @Author John Muñoz
+ */
 @Service
 public class UserServices {
-
+    /**
+     * Objeto del userRespository
+     */
     @Autowired
     private UserRepository userRepository;
 
+    /**
+     * llama el metodo del objeto UserRepository para obtener todo los usuarios
+     * @return retorna una lista con todos los usuarios
+     */
     public List<User> getAllUser(){
         return userRepository.getAllUser();
     }
 
+    /**
+     * consulta a un usuario por id
+     * @param id parametro del id de usuario
+     * @return el usuario encontrado
+     */
     public Optional<User> getUser(int id){
         return userRepository.getUser(id);
     }
 
+    /**
+     * Metodo para guardar usuarios
+     * @param user recibe como parametros el objeto usuario
+     * @return validacion si se guardo
+     */
     public User save(User user){
             if (user.getId() != null){
                 Optional<User> revision=userRepository.getUser(user.getId());
@@ -35,6 +54,11 @@ public class UserServices {
             }
     }
 
+    /**
+     * Metodo para actualizar usuarios
+     * @param user recibe como parametros el objeto usuario
+     * @return validacion si se actualizo
+     */
     public User update(User user){
         if (user.getId()!= null){
             Optional<User> revision = userRepository.getUser(user.getId());
@@ -80,6 +104,11 @@ public class UserServices {
         }
     }
 
+    /**
+     * Metodo para eliminar usuarios
+     * @param id recibe como parametros el id del usuario
+     * @return verdadero o false si se pudo guardar
+     */
     public boolean deleteUser(int id){
         Boolean aBoolean = getUser(id).map(user ->{
             userRepository.delete(user);
@@ -88,10 +117,21 @@ public class UserServices {
         return aBoolean;
     }
 
+    /**
+     * Metodo para validar si existe un email
+     * @param email recibe el email para verificar
+     * @return validacion del email
+     */
     public boolean existEmail(String email){
         return userRepository.existEmail(email);
     }
 
+    /**
+     * Metodo para validar el login o la combinacion email/password
+     * @param email recibe el email del usuario
+     * @param password recibe el password
+     * @return retorna el usuario
+     */
     public User loginUser(String email,String password){
         Optional<User> revision = userRepository.loginUser(email, password);
         if (revision.isEmpty()){

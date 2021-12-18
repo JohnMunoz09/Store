@@ -1,12 +1,15 @@
 package reto.mintic.ciclo4.Reto.Repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 import reto.mintic.ciclo4.Reto.Interface.InterfaceOrder;
 import reto.mintic.ciclo4.Reto.Model.Order;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,12 +50,17 @@ public class OrderRespository {
             return interfaceOrder.findBySalesManIdAndStatus(id,status);
         }
 
+    @Autowired
+    private MongoTemplate mongoTemplate;
         public List<Order> getRegisterDayId(String registerDay, Integer id) {
-            try {
-                return interfaceOrder.findByRegisterDayAndSalesManId(new SimpleDateFormat("yyyy-MM-dd").parse(registerDay),id);
-            } catch (ParseException error){
-                System.out.println(error);
-                return null;
-            }
+            DateTimeFormatter dataTime = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            Query query = new Query();
+            Criteria dateCriteria = Criteria.where("registerDay")
+                    .gte(LocalDate.parse(registerDay, dataTime).minusDays(1).atStartOfDay())
+                    .lt(LocalDate.parse(registerDay, dataTime).plusDays(1).atStartOfDay())
+                    .and("salesMan.id").is(id);
+
+            query.addCriteria(dateCriteria);
+            return mongoTemplate.find(query,Order.class);
         }
 }
