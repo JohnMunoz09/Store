@@ -13,7 +13,7 @@ public interface InterfaceSupplement extends MongoRepository<Supplement, String>
     Optional<Supplement> findByReference(String reference);
 
     @Query("{price:?0}")
-    public List<Supplement> findByPrice(double price);
+    List<Supplement> findByPrice(double price);
 
-    public List<Supplement> findByDescriptionContainingIgnoreCase(String description);
+    List<Supplement> findByDescriptionContainingIgnoreCase(String description);
 }

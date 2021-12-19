@@ -17,6 +17,6 @@ public interface InterfaceUser extends MongoRepository<User, Integer> {
   Optional<User> findByEmailAndPassword(String email, String password);
   @Query("{name:?0,email:?1}")
   Optional<User> findByNameOrEmail(String name,String email);
-
+  @Query("{monthBirthtDay:?0}")
   List<User> findByMonthBirthtDay(String monthBirthtDay);
 }
