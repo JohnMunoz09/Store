@@ -36,4 +36,12 @@ public class SupplementRepository {
         interfaceSupplement.delete(supplement);
     }
 
+    public List<Supplement> getPrice(double price){
+        return interfaceSupplement.findByPrice(price);
+    }
+
+    public List<Supplement> getDescriptionContaining(String description){
+        return interfaceSupplement.findByDescriptionContainingIgnoreCase(description);
+    }
+
 }

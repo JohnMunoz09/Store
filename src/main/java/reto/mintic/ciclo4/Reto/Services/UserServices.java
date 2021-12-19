@@ -140,4 +140,8 @@ public class UserServices {
             return revision.get();
         }
     }
+
+    public List <User> getMonthBirthDay(String monthBirthDay){
+        return userRepository.getMonthBirthDay(monthBirthDay);
+    }
 }

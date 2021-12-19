@@ -45,5 +45,14 @@ public class SupplementController {
         return supplementSer.deleteSupplement(reference);
     }
 
+    @GetMapping("/price/{price}")
+    public List<Supplement> getPrice(@PathVariable("price") double price){
+        return supplementSer.getPrice(price);
+    }
+
+    @GetMapping("/description/{description}")
+    public List<Supplement> getDescriptionContaining(@PathVariable("description") String description){
+        return supplementSer.getDescriptionContaining(description);
+    }
 
 }

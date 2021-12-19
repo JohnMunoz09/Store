@@ -78,5 +78,13 @@ public class SupplementServices {
         }).orElse(false);
         return aBoolean;
     }
+
+    public List<Supplement> getPrice(double price){
+        return supplementR.getPrice(price);
+    }
+
+    public List<Supplement> getDescriptionContaining(String description){
+        return supplementR.getDescriptionContaining(description);
+    }
 }
 

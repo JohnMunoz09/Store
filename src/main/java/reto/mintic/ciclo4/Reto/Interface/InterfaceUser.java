@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import reto.mintic.ciclo4.Reto.Model.User;
 
+import java.util.List;
 import java.util.Optional;
 //public interface InterfaceUser extends MongoRepository<User, String>
 public interface InterfaceUser extends MongoRepository<User, Integer> {
@@ -16,4 +17,6 @@ public interface InterfaceUser extends MongoRepository<User, Integer> {
   Optional<User> findByEmailAndPassword(String email, String password);
   @Query("{name:?0,email:?1}")
   Optional<User> findByNameOrEmail(String name,String email);
+
+  List<User> findByMonthBirthtDay(String monthBirthtDay);
 }

@@ -4,6 +4,7 @@ package reto.mintic.ciclo4.Reto.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import reto.mintic.ciclo4.Reto.Model.Order;
 import reto.mintic.ciclo4.Reto.Model.User;
 import reto.mintic.ciclo4.Reto.Services.UserServices;
 
@@ -98,5 +99,8 @@ public class UserController {
         return userServices.getUser(id);
     }
 
-
+    @GetMapping("/birthday/{monthBirthDay}")
+    public List<User> getMonthBirthDay(@PathVariable("monthBirthDay")String monthBirthDay){
+        return userServices.getMonthBirthDay(monthBirthDay);
+    }
 }

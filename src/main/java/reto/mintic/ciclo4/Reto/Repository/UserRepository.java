@@ -46,4 +46,8 @@ public class UserRepository {
     public Optional<User> getNameOrEmail(String name, String email){
         return interfaceUser.findByNameOrEmail(name,email);
     }
+
+    public List<User> getMonthBirthDay(String monthBirthDay){
+        return interfaceUser.findByMonthBirthtDay(monthBirthDay);
+    }
 }
